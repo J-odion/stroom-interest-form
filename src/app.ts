@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 const ALLOWED_ORIGINS = [
-  "https://credit.kairoshof.com/",
+  "https://credit.kairoshof.com",
   "http://localhost:3000",
 ];
 
