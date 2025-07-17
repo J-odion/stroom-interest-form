@@ -24,7 +24,7 @@ const FormDataSchema = new Schema<IFormData>(
     residenceState:{ type: String, required: true },
     systemCapacity:{ type: String, required: true },
     occupation:{ type: String, required: true },
-    otherSector:{ type: String, required: true },
+    otherSector:{ type: String, required: false },
     workplaceSector:{ type: String, required: true },
     estimatedBudget:{ type: String, required: true },
     homeAddress:{ type: String, required: true },

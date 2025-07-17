@@ -57,10 +57,6 @@ export const createFormData = async (req: Request, res: Response) => {
             errors.push({ field: 'occupation', message: 'Occupation is required.' });
         }
 
-        if (!otherSector) {
-            errors.push({ field: 'otherSector', message: 'Other sector is required.' });
-        }
-
         if (!workplaceSector) {
             errors.push({ field: 'workplaceSector', message: 'Workplace sector is required.' });
         }
