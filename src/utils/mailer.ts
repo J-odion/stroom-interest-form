@@ -5,7 +5,7 @@ dotenv.config();
 
 export const transporter = nodemailer.createTransport({
 
-    host: 'mail.kairoshof.com',
+    host: 'mail.kairosenergy.ng',
     port: 465,
     secure: true,
     auth: {
