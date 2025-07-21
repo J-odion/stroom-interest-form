@@ -56,6 +56,15 @@ export const buildFormSubmissionEmail = (recipientName: string, data: any) => `
         .contact-item span {
           color: #1e293b;
         }
+        .partners {
+          margin-top: 32px;
+          text-align: center;
+        }
+        .partners img {
+          max-height: 40px;
+          margin: 0 10px;
+          vertical-align: middle;
+        }
       </style>
     </head>
     <body>
@@ -68,13 +77,17 @@ export const buildFormSubmissionEmail = (recipientName: string, data: any) => `
             <tr><td><strong>Full Name:</strong></td><td>${data.fullName}</td></tr>
             <tr><td><strong>Email:</strong></td><td>${data.email}</td></tr>
             <tr><td><strong>Phone Number:</strong></td><td>${data.phoneNumber}</td></tr>
-            <tr><td><strong>Home Address:</strong></td><td>${data.homeAddress}</td></tr>
             <tr><td><strong>Residence State:</strong></td><td>${data.residenceState}</td></tr>
             <tr><td><strong>System Capacity:</strong></td><td>${data.systemCapacity}</td></tr>
-            <tr><td><strong>Occupation:</strong></td><td>${data.occupation || 'N/A'}</td></tr>
+            <tr><td><strong>System Price:</strong></td><td>${data.systemPrice}</td></tr>
+            <tr><td><strong>System Price:</strong></td><td>${data.systemPrice}</td></tr>
+            <tr><td><strong>System Price:</strong></td><td>${data.estimatedBudget}</td></tr>
+            <tr><td><strong>Occupation:</strong></td><td>${data.occupation}</td></tr>
             <tr><td><strong>Other Sector:</strong></td><td>${data.otherSector || 'N/A'}</td></tr>
-            <tr><td><strong>Workplace Sector:</strong></td><td>${data.workplaceSector || 'N/A'}</td></tr>
-            <tr><td><strong>Estimated Budget:</strong></td><td>${data.estimatedBudget || 'N/A'}</td></tr>
+            <tr><td><strong>Workplace Sector:</strong></td><td>${data.workplaceSector}</td></tr>
+            <tr><td><strong>Place of Employment:</strong></td><td>${data.placeOfEmployment}</td></tr>
+            <tr><td><strong>Salary Range:</strong></td><td>${data.salaryRange}</td></tr>
+            <tr><td><strong>Home Address:</strong></td><td>${data.homeAddress}</td></tr>
             <tr><td><strong>Payment Plan:</strong></td><td>${data.paymentPlan}</td></tr>
           </tbody>
         </table>
@@ -90,6 +103,11 @@ export const buildFormSubmissionEmail = (recipientName: string, data: any) => `
               <img src="https://img.icons8.com/ios-filled/20/22c55e/new-post.png" alt="Email" />
               <span>hello@kairoshofenergy.com</span>
             </div>
+          </div>
+          <div class="partners">
+            <p style="margin-bottom: 10px; font-weight: bold;">In partnership with:</p>
+            <img src="https://credit.kairoshof.com/creditcorp.png" alt="CreditCorp" />
+            <img src="https://credit.kairoshof.com/Fidelity_Bank_Plc_Main_Logo.svg" alt="Fidelity Bank" />
           </div>
         </div>
       </div>

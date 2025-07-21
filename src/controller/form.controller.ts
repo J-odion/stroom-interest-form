@@ -19,10 +19,13 @@ export const createFormData = async (req: Request, res: Response) => {
             homeAddress,
             residenceState,
             systemCapacity,
+            systemPrice,
             occupation,
             otherSector,
             workplaceSector,
+            salaryRange,
             estimatedBudget,
+            placeOfEmployment,
             paymentPlan,
         } = req.body;
 
@@ -53,6 +56,10 @@ export const createFormData = async (req: Request, res: Response) => {
             errors.push({ field: 'systemCapacity', message: 'System capacity is required.' });
         }
 
+        if (!systemPrice) {
+            errors.push({ field: 'systemPrice', message: 'System price is required.' });
+        }
+
         if (!occupation) {
             errors.push({ field: 'occupation', message: 'Occupation is required.' });
         }
@@ -60,7 +67,12 @@ export const createFormData = async (req: Request, res: Response) => {
         if (!workplaceSector) {
             errors.push({ field: 'workplaceSector', message: 'Workplace sector is required.' });
         }
-
+        if (!placeOfEmployment) {
+            errors.push({ field: 'placeOfEmployment', message: 'Place of employment is required.' });
+        }
+        if (!salaryRange) {
+            errors.push({ field: 'salaryRange', message: 'Salary Range is required.' });
+        }
         if (!estimatedBudget) {
             errors.push({ field: 'estimatedBudget', message: 'Estimated budget is required.' });
         }
@@ -85,9 +97,12 @@ export const createFormData = async (req: Request, res: Response) => {
             homeAddress,
             residenceState,
             systemCapacity,
+            systemPrice,
             occupation,
             otherSector,
             workplaceSector,
+            placeOfEmployment,
+            salaryRange,
             estimatedBudget,
             paymentPlan,
         });
