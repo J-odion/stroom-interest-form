@@ -13,10 +13,10 @@ export interface IFormData extends Document {
   otherSector: string,
   workplaceSector: string,
   placeOfEmployment: string,
-  estimatedBudget: string,
   salaryRange: string,
   paymentPlan: string,
-  createdAt: Date;
+  createdAt: Date,
+  provider: string,
 }
 
 const FormDataSchema = new Schema<IFormData>(
@@ -32,9 +32,9 @@ const FormDataSchema = new Schema<IFormData>(
     workplaceSector:{ type: String, required: true },
     placeOfEmployment:{ type: String, required: true },
     salaryRange:{ type: String, required: true },
-    estimatedBudget:{ type: String, required: true },
     homeAddress:{ type: String, required: true },
     paymentPlan:{ type: String, required: true },
+    provider:{ type: String, required: true },
   },
   { timestamps: true }
 );

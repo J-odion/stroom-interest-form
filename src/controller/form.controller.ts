@@ -24,7 +24,7 @@ export const createFormData = async (req: Request, res: Response) => {
             otherSector,
             workplaceSector,
             salaryRange,
-            estimatedBudget,
+            provider,
             placeOfEmployment,
             paymentPlan,
         } = req.body;
@@ -73,10 +73,9 @@ export const createFormData = async (req: Request, res: Response) => {
         if (!salaryRange) {
             errors.push({ field: 'salaryRange', message: 'Salary Range is required.' });
         }
-        if (!estimatedBudget) {
-            errors.push({ field: 'estimatedBudget', message: 'Estimated budget is required.' });
+        if (!provider) {
+            errors.push({ field: 'provider', message: 'provider is required.' });
         }
-
         if (!paymentPlan) {
             errors.push({ field: 'paymentPlan', message: 'Payment plan is required.' });
         }
@@ -103,7 +102,6 @@ export const createFormData = async (req: Request, res: Response) => {
             workplaceSector,
             placeOfEmployment,
             salaryRange,
-            estimatedBudget,
             paymentPlan,
         });
 

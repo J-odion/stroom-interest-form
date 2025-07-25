@@ -80,8 +80,7 @@ export const buildFormSubmissionEmail = (recipientName: string, data: any) => `
             <tr><td><strong>Residence State:</strong></td><td>${data.residenceState}</td></tr>
             <tr><td><strong>System Capacity:</strong></td><td>${data.systemCapacity}</td></tr>
             <tr><td><strong>System Price:</strong></td><td>${data.systemPrice}</td></tr>
-            <tr><td><strong>System Price:</strong></td><td>${data.systemPrice}</td></tr>
-            <tr><td><strong>System Price:</strong></td><td>${data.estimatedBudget}</td></tr>
+            <tr><td><strong>System Price:</strong></td><td>${data.provider}</td></tr>
             <tr><td><strong>Occupation:</strong></td><td>${data.occupation}</td></tr>
             <tr><td><strong>Other Sector:</strong></td><td>${data.otherSector || 'N/A'}</td></tr>
             <tr><td><strong>Workplace Sector:</strong></td><td>${data.workplaceSector}</td></tr>
