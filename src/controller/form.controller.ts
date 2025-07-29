@@ -103,6 +103,7 @@ export const createFormData = async (req: Request, res: Response) => {
             placeOfEmployment,
             salaryRange,
             paymentPlan,
+            provider,
         });
 
         const savedData = await newFormData.save();
