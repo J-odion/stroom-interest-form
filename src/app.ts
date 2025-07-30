@@ -9,7 +9,9 @@ const app = express();
 
 const ALLOWED_ORIGINS = [
   "https://credit.kairoshof.com",
-  "http://localhost:3000",
+  // "http://localhost:3000",
+  // "http://localhost:3002",
+  // "http://localhost:3001/",
 ];
 
 // ✅ Type-safe CORS configuration
