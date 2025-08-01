@@ -158,30 +158,101 @@ export const createFormData = async (req: Request, res: Response) => {
 
 
 // GET /api/forms?page=1
+// export const getFormData = async (req: Request, res: Response) => {
+//     try {
+//         const page = parseInt(req.query.page as string) || 1;
+//         const limit = 20;
+//         const skip = (page - 1) * limit;
+
+//         const total = await FormData.countDocuments();
+//         const forms = await FormData.find()
+//             .sort({ createdAt: -1 })
+//             .skip(skip)
+//             .limit(limit);
+
+//         const hasNext = skip + limit < total;
+//         const hasPrevious = page > 1;
+
+//         res.json({
+//             page,
+//             total,
+//             totalPages: Math.ceil(total / limit),
+//             hasNext,
+//             hasPrevious,
+//             forms,
+//         });
+//     } catch (error) {
+//         res.status(500).json({ error: 'Server Error' });
+//     }
+// };
+
 export const getFormData = async (req: Request, res: Response) => {
-    try {
-        const page = parseInt(req.query.page as string) || 1;
-        const limit = 20;
-        const skip = (page - 1) * limit;
+  try {
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = 20;
+    const skip = (page - 1) * limit;
 
-        const total = await FormData.countDocuments();
-        const forms = await FormData.find()
-            .sort({ createdAt: -1 })
-            .skip(skip)
-            .limit(limit);
+    // Extract filters
+    const {
+      paymentPlan,
+      systemCapacity,
+      state,
+      provider,
+      dateFrom,
+      dateTo,
+    } = req.query;
 
-        const hasNext = skip + limit < total;
-        const hasPrevious = page > 1;
+    // Build dynamic filter object
+    const filter: Record<string, any> = {};
 
-        res.json({
-            page,
-            total,
-            totalPages: Math.ceil(total / limit),
-            hasNext,
-            hasPrevious,
-            forms,
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'Server Error' });
+    if (paymentPlan && paymentPlan !== "all") {
+      filter.paymentPlan = paymentPlan;
     }
+
+    if (systemCapacity && systemCapacity !== "all") {
+      filter.systemCapacity = systemCapacity;
+    }
+
+    if (state && state !== "all") {
+      filter.residenceState = state;
+    }
+
+    if (provider && provider !== "all") {
+      filter.provider = provider;
+    }
+
+    if (dateFrom || dateTo) {
+      filter.createdAt = {};
+      if (dateFrom) {
+        filter.createdAt.$gte = new Date(dateFrom as string);
+      }
+      if (dateTo) {
+        // Set dateTo to the end of the day
+        const endDate = new Date(dateTo as string);
+        endDate.setHours(23, 59, 59, 999);
+        filter.createdAt.$lte = endDate;
+      }
+    }
+
+    const total = await FormData.countDocuments(filter);
+    const forms = await FormData.find(filter)
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    const hasNext = skip + limit < total;
+    const hasPrevious = page > 1;
+
+    res.json({
+      page,
+      total,
+      totalPages: Math.ceil(total / limit),
+      hasNext,
+      hasPrevious,
+      forms,
+    });
+  } catch (error) {
+    console.error("Error fetching form data:", error);
+    res.status(500).json({ error: "Server Error" });
+  }
 };
