@@ -11,6 +11,7 @@ const ALLOWED_ORIGINS = [
   "https://credit.kairoshof.com",
   "http://localhost:3000",
   "https://credit-database.vercel.app",
+  "https://credit-data-portal-dashboard.vercel.app",
   // "http://localhost:3002",
   "http://localhost:3001/"
 ];
